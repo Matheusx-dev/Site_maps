@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f3">
+  <meta name="description" content="Projeto demonstrativo Clínica Movimento: fisioterapia, RPG, acupuntura e informações de contato ilustrativas.">
+  <title>Clínica Movimento | Projeto de portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #173a3a;
+      --ink-soft: #486261;
+      --teal: #167c72;
+      --teal-dark: #11675f;
+      --mint: #e3f2ed;
+      --cream: #f6f7f3;
+      --white: #fff;
+      --line: #dce7e1;
+      --shadow: 0 20px 55px rgba(27, 69, 63, .1);
+      --font-heading: 'Manrope', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--font-body); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow { color: var(--teal); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .section { padding: 88px 0; }
+    .section-heading { max-width: 650px; margin: 0 auto 42px; text-align: center; }
+    .section-heading h2 { margin: 10px 0 12px; font: 800 clamp(1.9rem, 4vw, 2.7rem)/1.15 var(--font-heading); letter-spacing: -.045em; }
+    .section-heading p { margin: 0; color: var(--ink-soft); }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 10px; padding: 13px 22px; border: 0; border-radius: 999px; background: var(--teal); color: var(--white); font-weight: 700; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); background: var(--teal-dark); box-shadow: 0 10px 24px rgba(22, 124, 114, .2); }
+    .button svg { width: 20px; height: 20px; flex: 0 0 auto; }
+    .button-outline { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+    .button-outline:hover { border-color: var(--teal); background: var(--white); color: var(--teal-dark); box-shadow: none; }
+
+    .site-header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(220, 231, 225, .8); background: rgba(246, 247, 243, .92); backdrop-filter: blur(14px); }
+    .header-inner { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; flex: 0 0 auto; align-items: center; }
+    .brand-logo { display: block; width: 190px; height: auto; border-radius: 9px; }
+    .nav { display: flex; align-items: center; gap: 28px; color: var(--ink-soft); font-size: .93rem; font-weight: 600; }
+    .nav a:hover { color: var(--teal); }
+    .header-cta { min-height: 43px; padding: 9px 16px; font-size: .88rem; }
+
+    .hero { position: relative; overflow: hidden; padding: 88px 0 96px; }
+    .hero::before { position: absolute; top: -160px; right: -100px; width: 540px; height: 540px; border-radius: 50%; background: radial-gradient(circle, rgba(184, 222, 207, .58), rgba(184, 222, 207, 0) 68%); content: ''; pointer-events: none; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 54px; }
+    .hero-copy { max-width: 610px; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid #cfe4d9; border-radius: 999px; background: rgba(255,255,255,.62); color: var(--teal-dark); font-size: .83rem; font-weight: 700; }
+    .hero-kicker svg { width: 16px; height: 16px; }
+    .hero h1 { margin: 20px 0 18px; font: 800 clamp(2.8rem, 6vw, 4.7rem)/1.06 var(--font-heading); letter-spacing: -.065em; }
+    .hero h1 span { color: var(--teal); }
+    .hero-copy > p { max-width: 520px; margin: 0 0 28px; color: var(--ink-soft); font-size: 1.1rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 25px; color: var(--ink-soft); font-size: .9rem; }
+    .hero-note svg { width: 19px; height: 19px; color: var(--teal); }
+    .hero-art { position: relative; min-height: 430px; display: grid; place-items: center; }
+    .art-label { position: absolute; right: 0; bottom: 42px; display: flex; align-items: center; gap: 11px; padding: 13px 17px; border: 1px solid rgba(255,255,255,.75); border-radius: 15px; background: rgba(255,255,255,.93); box-shadow: var(--shadow); }
+    .art-label-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px; background: var(--mint); color: var(--teal); }
+    .art-label-icon svg { width: 20px; height: 20px; }
+    .art-label strong { display: block; font-size: .88rem; }
+    .art-label small { color: var(--ink-soft); font-size: .75rem; }
+    .photo-frame { position: relative; overflow: hidden; background: linear-gradient(145deg, #dcebe3, #bdd8cb); }
+    .hero-photo { width: min(100%, 430px); aspect-ratio: 1; border: 7px solid rgba(255,255,255,.9); border-radius: 22px; box-shadow: var(--shadow); animation: photo-arrive .9s .12s both; }
+    .hero-photo img { object-position: 14% center; }
+    .hero-photo:hover img { transform: scale(1.015); transform-origin: 20% center; }
+    .photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .photo-frame:hover img { transform: scale(1.045); }
+    .photo-fallback { position: absolute; inset: 0; display: grid; align-content: end; gap: 3px; padding: 22px; background: linear-gradient(180deg, transparent 46%, rgba(19,54,49,.72)); color: white; pointer-events: none; }
+    .photo-fallback strong { font: 700 1rem var(--font-heading); }
+    .photo-fallback small { color: rgba(255,255,255,.85); }
+    .photo-frame.has-image .photo-fallback { opacity: 0; transition: opacity .25s ease; }
+    .art-label { z-index: 1; }
+
+    .about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 64px; }
+    .about-visual { position: relative; min-height: 360px; overflow: hidden; border-radius: 24px; background: var(--mint); box-shadow: var(--shadow); }
+    .about-visual img { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .about-visual:hover img { transform: scale(1.035); }
+    .about-copy h2 { margin: 10px 0 16px; font: 800 clamp(1.9rem, 4vw, 2.6rem)/1.16 var(--font-heading); letter-spacing: -.045em; }
+    .about-copy p { margin: 0 0 14px; color: var(--ink-soft); }
+    .about-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
+    .about-point { display: flex; align-items: center; gap: 9px; color: var(--ink); font-size: .92rem; font-weight: 700; }
+    .about-point svg { width: 19px; height: 19px; color: var(--teal); flex: 0 0 auto; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card { padding: 30px 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .service-card:hover { transform: translateY(-5px); border-color: #b7d9ca; box-shadow: var(--shadow); }
+    .service-icon { display: grid; width: 54px; height: 54px; place-items: center; border-radius: 16px; background: var(--mint); color: var(--teal); }
+    .service-icon svg { width: 27px; height: 27px; }
+    .service-card h3 { margin: 19px 0 8px; font: 700 1.2rem var(--font-heading); }
+    .service-card p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+    .service-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; color: var(--teal-dark); font-size: .9rem; font-weight: 700; }
+    .service-link svg { width: 16px; height: 16px; transition: transform .2s ease; }
+    .service-link:hover svg { transform: translateX(3px); }
+    .service-photo { display: block; width: calc(100% + 52px); height: 250px; margin: -30px -26px 20px; overflow: hidden; border-radius: 17px 17px 5px 5px; background: var(--mint); }
+    .service-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+    .service-photo-physio img { object-position: center 26%; }
+    .service-card:hover .service-photo img { transform: scale(1.045); }
+
+    .gallery { overflow: hidden; background: var(--white); }
+    .gallery-grid { display: grid; grid-template-columns: 1.15fr .85fr 1fr; gap: 17px; align-items: stretch; }
+    .gallery-item { position: relative; min-height: 350px; overflow: hidden; border-radius: 18px; background: #dcebe3; box-shadow: 0 12px 32px rgba(27,69,63,.09); }
+    .gallery-item:nth-child(2) { margin-top: 30px; }
+    .gallery-item:nth-child(3) { margin-top: 60px; }
+    .gallery-item img { display: block; width: 100%; height: 100%; min-height: 350px; object-fit: cover; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+    .gallery-placeholder { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 7px; padding: 22px; color: var(--teal-dark); text-align: center; }
+    .gallery-placeholder svg { width: 42px; height: 42px; opacity: .7; }
+    .gallery-placeholder strong { font: 700 1rem var(--font-heading); }
+    .gallery-placeholder small { max-width: 250px; color: var(--ink-soft); font-size: .78rem; }
+    .gallery-item.has-image .gallery-placeholder { display: none; }
+    .gallery-item.image-missing img { display: none; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-caption { position: absolute; right: 0; bottom: 0; left: 0; padding: 42px 18px 17px; background: linear-gradient(transparent, rgba(15,43,39,.77)); color: white; }
+    .gallery-caption strong { display: block; font: 700 1rem var(--font-heading); }
+    .gallery-caption span { color: rgba(255,255,255,.82); font-size: .82rem; }
+    .gallery-note { margin: 25px 0 0; color: var(--ink-soft); text-align: center; font-size: .88rem; }
+
+    .reviews { position: relative; }
+    .reviews-topline { display: flex; align-items: center; justify-content: center; gap: 12px; margin: -20px 0 34px; color: var(--ink-soft); }
+    .rating-badge { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid #e8d8a9; border-radius: 999px; background: #fffaf0; color: #704d0b; font-weight: 700; }
+    .rating-badge .stars { color: #d69a23; letter-spacing: .08em; }
+    .review-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; max-width: 1060px; margin: 0 auto; }
+    .review-card { position: relative; grid-column: span 3; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); box-shadow: 0 12px 35px rgba(27,69,63,.06); transition: transform .25s ease, box-shadow .25s ease; }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .review-card:last-child { grid-column: 2 / span 4; }
+    .review-quote-mark { color: #9dcabb; font: 800 4rem/.7 Georgia, serif; }
+    .review-card blockquote { margin: 13px 0 22px; color: var(--ink); font: 500 1.04rem/1.65 var(--font-body); }
+    .review-person { display: flex; align-items: center; gap: 12px; padding-top: 15px; border-top: 1px solid var(--line); }
+    .review-avatar { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: var(--mint); color: var(--teal-dark); font-weight: 800; }
+    .review-person strong { display: block; font-size: .9rem; }
+    .review-person small { color: var(--ink-soft); font-size: .8rem; }
+    .reviews-disclaimer { max-width: 700px; margin: 20px auto 0; color: #6a7d79; font-size: .78rem; text-align: center; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .service-card.reveal:nth-child(2), .gallery-item.reveal:nth-child(2), .review-card.reveal:nth-child(2) { transition-delay: .12s; }
+    .service-card.reveal:nth-child(3), .gallery-item.reveal:nth-child(3) { transition-delay: .22s; }
+    .review-card.reveal:nth-child(3) { transition-delay: .2s; }
+    .review-card.reveal:nth-child(4) { transition-delay: .28s; }
+    .review-card.reveal:nth-child(5) { transition-delay: .36s; }
+    .hero-copy > * { animation: rise-in .7s both; }
+    .hero-copy > *:nth-child(2) { animation-delay: .08s; }
+    .hero-copy > *:nth-child(3) { animation-delay: .16s; }
+    .hero-copy > *:nth-child(4) { animation-delay: .24s; }
+    .hero-copy > *:nth-child(5) { animation-delay: .32s; }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes photo-arrive { from { opacity: 0; transform: scale(.975); } to { opacity: 1; transform: scale(1); } }
+
+    .location { background: #eaf3ee; }
+    .location-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: stretch; gap: 26px; }
+    .location-details { display: grid; gap: 14px; }
+    .info-card { display: flex; gap: 15px; padding: 20px; border: 1px solid rgba(22,124,114,.1); border-radius: 15px; background: rgba(255,255,255,.8); }
+    .info-icon { display: grid; width: 43px; height: 43px; flex: 0 0 auto; place-items: center; border-radius: 13px; background: var(--mint); color: var(--teal); }
+    .info-icon svg { width: 22px; height: 22px; }
+    .info-card h3 { margin: 1px 0 4px; font: 700 1rem var(--font-heading); }
+    .info-card p { margin: 0; color: var(--ink-soft); font-size: .92rem; }
+    .info-card a:not(.button) { color: var(--teal-dark); font-weight: 700; }
+    .map { min-height: 320px; overflow: hidden; border: 1px solid rgba(22,124,114,.15); border-radius: 18px; background: #dce9e2; box-shadow: 0 12px 35px rgba(27,69,63,.08); }
+    .map iframe { display: block; width: 100%; height: 100%; min-height: 320px; border: 0; }
+
+    .contact { padding: 78px 0; }
+    .contact-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; padding: 42px; border-radius: 24px; background: var(--ink); color: var(--white); }
+    .contact-copy .eyebrow { color: #9bd6c3; }
+    .contact-copy h2 { margin: 10px 0 13px; font: 800 clamp(1.9rem, 4vw, 2.55rem)/1.15 var(--font-heading); letter-spacing: -.045em; }
+    .contact-copy p { margin: 0; color: #c1d2cd; }
+    .contact-form { display: grid; gap: 14px; }
+    .field label { display: block; margin-bottom: 6px; color: #dce9e5; font-size: .87rem; font-weight: 600; }
+    .field input, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; outline: 0; background: rgba(255,255,255,.08); color: var(--white); }
+    .field input::placeholder, .field textarea::placeholder { color: #a9bbb6; }
+    .field input:focus, .field textarea:focus { border-color: #8bd1bd; box-shadow: 0 0 0 3px rgba(139,209,189,.16); }
+    .field textarea { min-height: 94px; resize: vertical; }
+    .contact-form .button { width: 100%; background: #36b77c; }
+    .contact-form .button:hover { background: #249b66; }
+    .contact-hint { margin: -4px 0 0; color: #b8cbc5; font-size: .78rem; }
+
+    .footer { padding: 25px 0; border-top: 1px solid var(--line); background: var(--white); color: var(--ink-soft); font-size: .88rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer p { margin: 0; }
+    .footer a { color: var(--teal-dark); font-weight: 700; }
+    :focus-visible { outline: 3px solid #50aa91; outline-offset: 3px; }
+
+    @media (max-width: 850px) {
+      .nav { gap: 16px; }
+      .hero-grid { gap: 20px; }
+      .hero-art { min-height: 370px; }
+      .about-grid { gap: 34px; }
+      .contact-panel { gap: 30px; padding: 32px; }
+      .hero-photo { width: min(100%, 370px); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item:nth-child(3) { display: none; }
+    }
+    @media (max-width: 780px) {
+      .nav { display: none; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 32px, 520px); }
+      .section { padding: 68px 0; }
+      .header-inner { min-height: 68px; }
+      .brand-logo { width: 160px; }
+      .header-cta { min-height: 40px; padding: 8px 12px; }
+      .hero { padding: 58px 0 66px; }
+      .hero-grid, .about-grid, .location-grid, .contact-panel { grid-template-columns: 1fr; }
+      .hero-grid { gap: 24px; }
+      .hero h1 { font-size: clamp(2.65rem, 12vw, 3.8rem); }
+      .hero-copy > p { font-size: 1rem; }
+      .hero-art { min-height: 320px; }
+      .hero-photo { width: min(100%, 320px); }
+      .art-label { right: 2px; bottom: 16px; }
+      .about-visual, .about-visual img { min-height: 270px; }
+      .about-points { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-photo { width: calc(100% + 50px); margin: -25px -25px 20px; }
+      .service-photo { height: 270px; }
+      .service-photo { width: calc(100% + 50px); margin: -25px -25px 20px; }
+      .gallery-grid, .review-grid { grid-template-columns: 1fr; }
+      .review-card, .review-card:last-child { grid-column: auto; }
+      .gallery-item, .gallery-item img { min-height: 300px; }
+      .gallery-item:nth-child(2), .gallery-item:nth-child(3) { display: block; margin-top: 0; }
+      .reviews-topline { align-items: flex-start; flex-direction: column; }
+      .service-card { padding: 25px; }
+      .map, .map iframe { min-height: 280px; }
+      .contact-panel { gap: 26px; padding: 27px 22px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Clínica Movimento — início">
+        <img class="brand-logo" src="assets/logo-clinica-movimento.svg" alt="Clínica Movimento — Fisioterapia e cuidado integrado">
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre">A clínica</a>
+        <a href="#atendimentos">Atendimentos</a>
+        <a href="#fotos">Espaço</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#localizacao">Localização</a>
+      </nav>
+      <a class="button header-cta" href="#contato" aria-label="Contato demonstrativo da Clínica Movimento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg>
+        Contato
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-2-5.8L4 11l6-2.2L12 3Z"/></svg> Saúde, cuidado e movimento</span>
+          <h1>Seu bem-estar em <span>boas mãos.</span></h1>
+          <p>Um espaço de cuidado e movimento, com atendimentos de fisioterapia, RPG e acupuntura.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contato">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L.2 24l6.5-1.7a11.8 11.8 0 0 0 5.4 1.3h.1c6.5 0 11.8-5.3 11.8-11.8a11.7 11.7 0 0 0-3.5-8.3ZM12.1 21.6a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.7 9.7 0 0 1-1.5-5.2c0-5.4 4.5-9.9 9.9-9.9a9.8 9.8 0 0 1 7 2.9 9.8 9.8 0 0 1 2.9 7c0 5.4-4.4 9.9-9.8 9.9Z"/></svg>
+              Fale com a clínica
+            </a>
+            <a class="button button-outline" href="#atendimentos">Conheça os atendimentos</a>
+          </div>
+          <div class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Localização demonstrativa · Brasília, DF</div>
+        </div>
+        <div class="hero-art reveal">
+          <div class="hero-photo photo-frame">
+            <img src="assets/illustracao-recepcao.svg" alt="Ilustração original de uma recepção acolhedora da Clínica Movimento" fetchpriority="high">
+            <span class="photo-fallback"><strong>Um espaço criado para acolher</strong><small>Ilustração original do projeto</small></span>
+          </div>
+          <div class="art-label">
+            <span class="art-label-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.6-7 11-7 11Z"/><path d="M8.5 12h2l1.2-2.5 2 5 1.1-2.5h1.7"/></svg></span>
+            <span><strong>Clínica Movimento</strong><small>Projeto demonstrativo</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="container about-grid">
+        <div class="about-visual"><img src="assets/illustracao-sobre.svg" alt="Ilustração original de uma profissional acompanhando pacientes em atendimento" loading="lazy"></div>
+        <div class="about-copy">
+          <span class="eyebrow">Sobre a clínica</span>
+          <h2>Cuidado que valoriza cada etapa do seu caminho.</h2>
+          <p>A Clínica Movimento é um conceito de clínica multidisciplinar criado para demonstrar uma presença digital acolhedora e funcional.</p>
+          <p>As informações deste projeto são ilustrativas e devem ser substituídas pelos dados reais da empresa antes de qualquer publicação.</p>
+          <div class="about-points">
+            <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Fisioterapia</div>
+            <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> RPG</div>
+            <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Acupuntura</div>
+            <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg> Fácil localização</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="atendimentos">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Como podemos ajudar</span>
+          <h2>Atendimentos</h2>
+          <p>Consulte a equipe para saber mais sobre os serviços disponíveis, horários e agendamentos.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <figure class="service-photo service-photo-physio"><img src="assets/illustracao-fisioterapia.svg" alt="Ilustração original de fisioterapeuta acompanhando exercício de mobilidade" loading="lazy"></figure>
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><path d="M9 10h6l2 4-3 2-1 5M9 10l-2 4 3 2 1 5M9 10l-2 7M15 10l2 7"/></svg></span>
+            <h3>Fisioterapia</h3>
+            <p>Entre em contato para consultar as modalidades de fisioterapia e obter informações sobre o atendimento.</p>
+            <a class="service-link" href="#contato">Consultar atendimento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="service-card">
+            <figure class="service-photo"><img src="assets/illustracao-rpg.svg" alt="Ilustração original de profissional orientando exercício de postura" loading="lazy"></figure>
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7c2 2 4 3 7 3s5-1 7-3M5 17c2-2 4-3 7-3s5 1 7 3"/><circle cx="12" cy="10" r="2"/><circle cx="12" cy="14" r="2"/></svg></span>
+            <h3>RPG</h3>
+            <p>Fale com a clínica para saber sobre a disponibilidade de sessões de Reeducação Postural Global.</p>
+            <a class="service-link" href="#contato">Consultar atendimento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="service-card">
+            <figure class="service-photo"><img src="assets/illustracao-acupuntura.svg" alt="Ilustração original de atendimento de acupuntura" loading="lazy"></figure>
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 6l10 12M17 6 7 18"/><circle cx="12" cy="8" r="1.4" fill="currentColor"/><circle cx="8.5" cy="12" r="1.4" fill="currentColor"/><circle cx="15.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg></span>
+            <h3>Acupuntura</h3>
+            <p>Consulte a equipe sobre o atendimento de acupuntura, agenda e demais informações.</p>
+            <a class="service-link" href="#contato">Consultar atendimento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+        <p class="gallery-note">Ilustrações autorais de ambientes e atendimentos para apresentar o conceito do projeto.</p>
+      </div>
+    </section>
+
+    <section class="section gallery" id="fotos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Um pouco do nosso espaço</span>
+          <h2>Conheça o espaço</h2>
+          <p>Uma amostra visual de salas e equipamentos para compor o projeto demonstrativo.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img src="assets/illustracao-sala-a.svg" alt="Ilustração original de sala de exercícios com maca, bola terapêutica e barra de apoio" loading="lazy">
+            <span class="gallery-placeholder"><strong>Ilustração de sala de exercícios</strong><small>Arte original demonstrativa</small></span>
+            <figcaption class="gallery-caption"><strong>Movimento e reabilitação</strong><span>Uma das salas de fisioterapia</span></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/illustracao-sala-b.svg" alt="Ilustração original de espaço de atendimento com macas e janela" loading="lazy">
+            <span class="gallery-placeholder"><strong>Ilustração do espaço interno</strong><small>Arte original demonstrativa</small></span>
+            <figcaption class="gallery-caption"><strong>Espaço de atendimento</strong><span>Ilustração original</span></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/illustracao-sala-c.svg" alt="Ilustração original de sala de reabilitação com bola e equipamentos" loading="lazy">
+            <span class="gallery-placeholder"><strong>Ilustração da sala de reabilitação</strong><small>Arte original demonstrativa</small></span>
+            <figcaption class="gallery-caption"><strong>Cuidado em cada detalhe</strong><span>Outra perspectiva da clínica</span></figcaption>
+          </figure>
+        </div>
+        <p class="gallery-note">Ilustrações vetoriais criadas para este conceito de portfólio.</p>
+      </div>
+    </section>
+
+    <section class="section reviews" id="avaliacoes">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Área de avaliações</span>
+          <h2>O que seus pacientes podem contar</h2>
+          <p>Espaço pronto para receber avaliações autorizadas dos pacientes da Clínica Movimento.</p>
+        </div>
+        <div class="reviews-topline reveal">
+          <span class="rating-badge">Conteúdo demonstrativo</span>
+          <span>Os exemplos abaixo são fictícios e não representam avaliações reais.</span>
+        </div>
+        <div class="review-grid">
+          <article class="review-card reveal">
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <blockquote>“Exemplo de depoimento: conte como foi a atenção recebida durante o atendimento.”</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">E</span><span><strong>Exemplo fictício</strong><small>Substituir por relato autorizado</small></span></div>
+          </article>
+          <article class="review-card reveal">
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <blockquote>“Exemplo de depoimento: descreva a experiência com a equipe e o acompanhamento.”</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">E</span><span><strong>Exemplo fictício</strong><small>Substituir por relato autorizado</small></span></div>
+          </article>
+          <article class="review-card reveal">
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <blockquote>“Exemplo de depoimento: fale sobre a praticidade de encontrar diferentes atendimentos no mesmo espaço.”</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">E</span><span><strong>Exemplo fictício</strong><small>Substituir por relato autorizado</small></span></div>
+          </article>
+          <article class="review-card reveal">
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <blockquote>“Exemplo de depoimento: compartilhe o que mais gostou no espaço e no atendimento.”</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">E</span><span><strong>Exemplo fictício</strong><small>Substituir por relato autorizado</small></span></div>
+          </article>
+          <article class="review-card reveal">
+            <div class="review-quote-mark" aria-hidden="true">“</div>
+            <blockquote>“Exemplo de depoimento: conte como a equipe ajudou você durante sua jornada de cuidado.”</blockquote>
+            <div class="review-person"><span class="review-avatar" aria-hidden="true">E</span><span><strong>Exemplo fictício</strong><small>Substituir por relato autorizado</small></span></div>
+          </article>
+        </div>
+        <p class="reviews-disclaimer">Os textos são apenas modelos para apresentação do layout. Publique avaliações reais somente com autorização e sem alterar seu sentido.</p>
+      </div>
+    </section>
+
+    <section class="section location" id="localizacao">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Estamos por aqui</span>
+          <h2>Onde estamos</h2>
+          <p>Área pronta para inserir o endereço real da Clínica Movimento.</p>
+        </div>
+        <div class="location-grid">
+          <div class="location-details">
+            <div class="info-card">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><h3>Endereço</h3><p>Endereço demonstrativo<br>Brasília – DF<br>Substitua antes de publicar</p></div>
+            </div>
+            <div class="info-card">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div><h3>Horários</h3><p>Adicione aqui os horários de funcionamento<br>e dias de atendimento.</p></div>
+            </div>
+            <div class="info-card">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.1 1h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.1 9.3a16 16 0 0 0 6 6l1.9-1.9a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.3 1.6Z"/></svg></span>
+              <div><h3>Contato</h3><p><a href="#contato">(00) 00000-0000</a><br><a href="#contato">Configure o canal de atendimento</a></p></div>
+            </div>
+          </div>
+          <div class="map">
+            <iframe title="Mapa demonstrativo de Brasília" src="https://www.google.com/maps?q=Bras%C3%ADlia%2C%20DF&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-panel">
+        <div class="contact-copy">
+          <span class="eyebrow">Fale com a equipe</span>
+          <h2>Vamos ajudar você?</h2>
+          <p>Formulário demonstrativo. Configure os dados reais de contato antes de publicar o site.</p>
+        </div>
+        <form class="contact-form" id="whatsappForm">
+          <div class="field"><label for="clientName">Seu nome</label><input id="clientName" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required></div>
+          <div class="field"><label for="clientMessage">Sua mensagem</label><textarea id="clientMessage" name="message" placeholder="Escreva sua dúvida ou o atendimento que procura." required></textarea></div>
+          <button class="button" type="submit">Testar formulário demonstrativo</button>
+          <p class="contact-hint" id="contactNotice" role="status">Este formulário não envia dados; é apenas uma demonstração de portfólio.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Clínica Movimento · Projeto conceitual de portfólio, com dados e conteúdos demonstrativos.</p>
+      <a href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('.photo-frame img, .gallery-item img').forEach((image) => {
+      const frame = image.closest('.photo-frame, .gallery-item');
+      image.addEventListener('load', () => frame.classList.add('has-image'));
+      image.addEventListener('error', () => frame.classList.add('image-missing'));
+      if (image.complete) frame.classList.add(image.naturalWidth ? 'has-image' : 'image-missing');
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+    document.getElementById('whatsappForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      document.getElementById('contactNotice').textContent = 'Demonstração: nenhum dado foi enviado. Configure os contatos reais antes de publicar.';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img" aria-labelledby="title desc">
+  <title id="title">Clínica Movimento</title>
+  <desc id="desc">Fisioterapia e cuidado integrado</desc>
+  <rect width="640" height="180" rx="18" fill="#fff"/>
+  <g fill="none" stroke="#12458f" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+    <circle cx="58" cy="47" r="13" fill="#d5b45b" stroke="none"/>
+    <path d="M56 67c-17 10-25 26-21 43l9 36M64 72l18 25-16 20-5 29M44 106l-25 4M67 117l24 16"/>
+    <path d="m42 78 15 18 12-19"/>
+  </g>
+  <text x="112" y="91" fill="#12458f" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" letter-spacing="1">CLÍNICA</text>
+  <text x="110" y="143" fill="#12458f" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing="2">MOVIMENTO</text>
+  <path d="M402 62h208M402 126h208" stroke="#d5b45b" stroke-width="3" stroke-linecap="round"/>
+</svg>
